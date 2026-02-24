@@ -11130,6 +11130,9 @@ body {
 .about-section p {
   margin-bottom: 5rem;
 }
+.about-section img {
+  margin-top: -50px;
+}
 
 .products-section {
   padding: 4rem 0;
