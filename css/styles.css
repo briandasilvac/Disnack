@@ -11171,6 +11171,43 @@ body {
 .partners-section {
   padding-top: 4rem;
 }
+/* --- Style Premium pour tous les écrans --- */
+.logo-item img {
+  filter: grayscale(100%);
+  opacity: 0.6;
+  transition: all 0.4s ease;
+  max-height: 10em;
+  object-fit: contain;
+}
+
+.logo-item img:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.05);
+}
+@media (max-width: 767.5px) {
+  .logo-slider {
+      display: flex !important;
+      flex-wrap: nowrap !important;
+      overflow-x: auto !important;
+      
+      /* Annule le centrage qui cause le décalage à gauche */
+      justify-content: flex-start !important; 
+
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 1em;
+      scroll-snap-type: x mandatory;
+  }
+  .logo-item {
+      /* Force chaque item à prendre 50% de la vue mobile */
+      flex: 0 0 50% !important;
+      max-width: 50% !important;
+      scroll-snap-align: start; /* On cale l'aimant au début du logo */
+  }
+  .logo-slider::-webkit-scrollbar {
+      display: none;
+  }
+}
 
 .contact-section {
   padding: 2rem 0;
