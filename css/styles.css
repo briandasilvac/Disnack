@@ -11015,7 +11015,7 @@ body {
   color: #fff;
 }
 #mainNav.navbar-shrink .nav-link:hover {
-  color: #00cf2e;
+  color: rgba(255, 255, 255, 0.75);
 }
 #mainNav.navbar-shrink .nav-link:active {
   color: #00b12f;
@@ -11032,8 +11032,12 @@ body {
   /* 2. Bordure discrète en bas */
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
+.dropdown-item{
+  color: rgba(255, 255, 255, 0.5)
+}
 .dropdown-item:hover {
-  background-color: #00cf2e;
+  background-color: rgba(0, 207, 46, 0.5);
+  color: rgba(255, 255, 255, 0.75)
 }
 @media (min-width: 992px) {
   #mainNav.navbar-shrink .nav-link.active {
