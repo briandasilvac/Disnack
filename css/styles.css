@@ -11211,6 +11211,49 @@ body {
   }
 }
 
+.benefit-card {
+  border: 1px solid rgba(33, 33, 33, 0.2);
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  height: 100%;
+}
+.benefit-card:hover {
+  transform: translateY(-10px);
+  border-color: #00cf2e;
+  background: rgba(0, 207, 46, 0.05);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+.icon-box {
+  width: 60px;
+  height: 60px;
+  background: #00cf2e;
+  color: white;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  font-size: 24px;
+  box-shadow: 0 8px 15px rgba(0, 207, 46, 0.3);
+}
+.benefit-card h4 {
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #fff;
+}
+.benefit-card p {
+  color: #adb5bd;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+/* Style spécial pour la carte centrale (mise en avant) */
+.benefit-card.active {
+  border-color: rgba(0, 207, 46, 0.5);
+  background: rgba(0, 207, 46, 0.02);
+}
+
 .partners-section {
   padding-top: 4rem;
 }
