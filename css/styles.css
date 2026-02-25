@@ -11024,12 +11024,11 @@ body {
   color: #00cf2e;
 }
 #mainNav.navbar-shrink {
-  /* 1. Fond foncé avec votre effet de flou */
+  /* Couleur de fond et effet de flou */
   background-color: rgba(33, 33, 33, 0.8) !important; 
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  
-  /* 2. Bordure discrète en bas */
+  /* Bordure discrète en bas */
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 .dropdown-item{
@@ -11039,10 +11038,28 @@ body {
   background-color: rgba(0, 207, 46, 0.5);
   color: rgba(255, 255, 255, 0.75)
 }
+.dropdown-item:active {
+  background-color: rgba(0, 207, 46, 0.75);
+  color: rgba(255, 255, 255)
+}
 @media (min-width: 992px) {
-  #mainNav.navbar-shrink .nav-link.active {
+  #mainNav .nav-link {
+    /* Bordure transparente par défaut sous tous les liens */
     outline: none;
-    border-bottom: 0.25rem solid #00cf2e;
+    border-bottom: 0.25rem solid transparent;
+  }
+  /* Couleur de bordure pour l'élément actif */
+  #mainNav.navbar-shrink .nav-link.active {
+    border-bottom-color: #00cf2e;
+    transition: border-color 0.3s ease;
+  }
+  .dropdown-menu {
+    /* Couleur de fond et effet de flou */
+    background-color: rgba(33, 33, 33) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    /* Bordure discrète */
+    border: 3px solid rgba(255, 255, 255, 0.1);
   }
   .nav-item.dropdown:hover .dropdown-menu {
     display: block;
@@ -11050,7 +11067,6 @@ body {
     opacity: 1;
     visibility: visible;
   }
-
   /* Permet au lien "Produits" de rester cliquable malgré le dropdown */
   .nav-item.dropdown .dropdown-toggle {
       pointer-events: auto;
