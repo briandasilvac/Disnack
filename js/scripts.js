@@ -8,92 +8,100 @@
 // 
 
 window.addEventListener('DOMContentLoaded', event => {
-    // --- Test pour SVG ---
-    const markers = document.querySelectorAll('.marker');
-    const tooltip = document.getElementById('map-tooltip');
-    const tooltipCity = document.getElementById('tooltip-city');
-    const tooltipContent = document.getElementById('tooltip-content');
+    // Détections des cartes pour éviter de les manipuler sur les pages de produits
+    const mapElement = document.getElementById('map'); // Pour Leaflet
+    const svgMap = document.querySelector('.swiss-map'); // Pour ton SVG
 
-    markers.forEach(marker => {
-        marker.addEventListener('click', function(e) {
-            // 1. Récupérer les données
-            const city = this.getAttribute('data-city');
-            const count = this.getAttribute('data-count');
+    // Condition pour éviter la manipulation des cartes sur les pages de produits
+    if (mapElement || svgMap) {
+        // --- Test pour SVG ---
+        const markers = document.querySelectorAll('.marker');
+        const tooltip = document.getElementById('map-tooltip');
+        const tooltipCity = document.getElementById('tooltip-city');
+        const tooltipContent = document.getElementById('tooltip-content');
 
-            // 2. Remplir la bulle
-            tooltipCity.textContent = city;
-            tooltipContent.innerHTML = `<strong>${count} partenaire${count > 1 ? 's' : ''}`;
+        markers.forEach(marker => {
+            marker.addEventListener('click', function(e) {
+                // 1. Récupérer les données
+                const city = this.getAttribute('data-city');
+                const count = this.getAttribute('data-count');
 
-            // 3. Positionner la bulle
-            // On récupère la position du clic par rapport au conteneur
-            const rect = document.querySelector('.map-container').getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
+                // 2. Remplir la bulle
+                tooltipCity.textContent = city;
+                tooltipContent.innerHTML = `<strong>${count} partenaire${count > 1 ? 's' : ''}`;
 
-            tooltip.style.left = x + "px";
-            tooltip.style.top = y + "px";
-            tooltip.style.display = "block";
+                // 3. Positionner la bulle
+                // On récupère la position du clic par rapport au conteneur
+                const rect = document.querySelector('.map-container').getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                tooltip.style.left = x + "px";
+                tooltip.style.top = y + "px";
+                tooltip.style.display = "block";
+            });
         });
-    });
 
-    // Etapes 1 à 5 pour map Leaflet
-    // 1. Initialisation de la carte avec options de verrouillage
-    var map = L.map('map', {
-        zoomControl: false,
-        scrollWheelZoom: false,
-        doubleClickZoom: false,
-        dragging: false,
-        touchZoom: false,
-        boxZoom: false,
-        keyboard: false
-    });
-
-    // 2. Chargement du fond de carte (Style sombre pour coller à ton thème)
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-        attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(map);
-
-    // 3. Création d'une icône personnalisée verte
-    var markerGroup = L.featureGroup().addTo(map);
-
-    function createIcon(number) {
-        return L.divIcon({
-            className: 'custom-div-icon',
-            html: `<div style='background-color:#00cf2e; color:white; border-radius:50%; width:30px; height:30px; display:flex; align-items:center; justify-content:center; border:2px solid #f8f9fa; font-weight:bold; box-shadow: 0 2px 5px rgba(0,0,0,0.1);'>${number}</div>`,
-            iconSize: [30, 30],
-            iconAnchor: [15, 15]
+        // Fermer la bulle si on clique ailleurs sur la carte
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.marker')) {
+                tooltip.style.display = "none";
+            }
         });
-    }
 
-    // 4. Ajout des marqueurs
-    const partners = [
-        { name: "Genève", coords: [46.2044, 6.1432], count: 2 },
-        { name: "Lausanne", coords: [46.5197, 6.6323], count: 1 },
-        { name: "Bienne", coords: [47.1367, 7.2468], count: 1 },
-        { name: "Jura", coords: [47.3667, 7.3444], count: 2 },
-        { name: "Bâle", coords: [47.5596, 7.5886], count: 2 },
-        { name: "Zürich", coords: [47.3769, 8.5417], count: 3 }
-    ];
+        // --- Test pour Leaflet ---
+        // Etapes 1 à 5 pour map Leaflet
+        // 1. Initialisation de la carte avec options de verrouillage
+        var map = L.map('map', {
+            zoomControl: false,
+            scrollWheelZoom: false,
+            doubleClickZoom: false,
+            dragging: false,
+            touchZoom: false,
+            boxZoom: false,
+            keyboard: false
+        });
 
-    partners.forEach(partner => {
-        L.marker(partner.coords, { icon: createIcon(partner.count) })
-            .addTo(markerGroup)
-            .bindPopup(`<b>${partner.name}</b><br>${partner.count} Partenaire${partner.count > 1 ? 's' : ''}.`);
-    });
-    
-    // 5. Ajustement automatique
-    map.fitBounds(markerGroup.getBounds(), { padding: [50, 50] });
+        // 2. Chargement du fond de carte (Style sombre pour coller à ton thème)
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
 
-    window.onresize = function() {
-        map.fitBounds(markerGroup.getBounds(), { padding: [50, 50] });
-    };
+        // 3. Création d'une icône personnalisée verte
+        var markerGroup = L.featureGroup().addTo(map);
 
-    // Fermer la bulle si on clique ailleurs sur la carte
-    document.addEventListener('click', function(e) {
-        if (!e.target.closest('.marker')) {
-            tooltip.style.display = "none";
+        function createIcon(number) {
+            return L.divIcon({
+                className: 'custom-div-icon',
+                html: `<div style='background-color:#00cf2e; color:white; border-radius:50%; width:30px; height:30px; display:flex; align-items:center; justify-content:center; border:2px solid #f8f9fa; font-weight:bold; box-shadow: 0 2px 5px rgba(0,0,0,0.1);'>${number}</div>`,
+                iconSize: [30, 30],
+                iconAnchor: [15, 15]
+            });
         }
-    });
+
+        // 4. Ajout des marqueurs
+        const partners = [
+            { name: "Genève", coords: [46.2044, 6.1432], count: 2 },
+            { name: "Lausanne", coords: [46.5197, 6.6323], count: 1 },
+            { name: "Bienne", coords: [47.1367, 7.2468], count: 1 },
+            { name: "Jura", coords: [47.3667, 7.3444], count: 2 },
+            { name: "Bâle", coords: [47.5596, 7.5886], count: 2 },
+            { name: "Zürich", coords: [47.3769, 8.5417], count: 3 }
+        ];
+
+        partners.forEach(partner => {
+            L.marker(partner.coords, { icon: createIcon(partner.count) })
+                .addTo(markerGroup)
+                .bindPopup(`<b>${partner.name}</b><br>${partner.count} Partenaire${partner.count > 1 ? 's' : ''}.`);
+        });
+        
+        // 5. Ajustement automatique
+        map.fitBounds(markerGroup.getBounds(), { padding: [50, 50] });
+
+        window.onresize = function() {
+            map.fitBounds(markerGroup.getBounds(), { padding: [50, 50] });
+        };
+    }
 
     // Navbar shrink function
     var navbarShrink = function () {
