@@ -11203,6 +11203,36 @@ body {
 .partners-section {
   padding-top: 4rem;
 }
+.swiss-map {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.1));
+}
+.map-shape {
+  fill: #f8f9fa; /* Couleur des cantons */
+  stroke: #dee2e6; /* Couleur des frontières */
+  stroke-width: 2;
+  transition: fill 0.3s;
+}
+.marker {
+  cursor: pointer;
+}
+.marker-bg {
+  fill: #00cf2e;
+  stroke: white;
+  stroke-width: 2;
+}
+.marker-number {
+  fill: white;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+}
+.marker:hover .marker-bg {
+  fill: #00b12f;
+  r: 20;
+}
+
 /* --- Style Premium pour tous les écrans --- */
 .logo-item img {
   filter: grayscale(100%);
