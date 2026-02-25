@@ -8,6 +8,34 @@
 // 
 
 window.addEventListener('DOMContentLoaded', event => {
+    // --- Test pour SVG ---
+    const markers = document.querySelectorAll('.marker');
+    const tooltip = document.getElementById('map-tooltip');
+    const tooltipCity = document.getElementById('tooltip-city');
+    const tooltipContent = document.getElementById('tooltip-content');
+
+    markers.forEach(marker => {
+        marker.addEventListener('click', function(e) {
+            // 1. Récupérer les données
+            const city = this.getAttribute('data-city');
+            const count = this.getAttribute('data-count');
+
+            // 2. Remplir la bulle
+            tooltipCity.textContent = city;
+            tooltipContent.innerHTML = `<strong>${count} partenaire${count > 1 ? 's' : ''}`;
+
+            // 3. Positionner la bulle
+            // On récupère la position du clic par rapport au conteneur
+            const rect = document.querySelector('.map-container').getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            tooltip.style.left = x + "px";
+            tooltip.style.top = y + "px";
+            tooltip.style.display = "block";
+        });
+    });
+
     // Etapes 1 à 5 pour map Leaflet
     // 1. Initialisation de la carte avec options de verrouillage
     var map = L.map('map', {
@@ -59,6 +87,13 @@ window.addEventListener('DOMContentLoaded', event => {
     window.onresize = function() {
         map.fitBounds(markerGroup.getBounds(), { padding: [50, 50] });
     };
+
+    // Fermer la bulle si on clique ailleurs sur la carte
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.marker')) {
+            tooltip.style.display = "none";
+        }
+    });
 
     // Navbar shrink function
     var navbarShrink = function () {

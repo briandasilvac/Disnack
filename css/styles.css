@@ -11205,6 +11205,9 @@ body {
 }
 
 /* Style pour la map SVG */
+.map-container{
+  position: relative;
+}
 .swiss-map {
   width: 100%;
   height: auto;
@@ -11214,25 +11217,47 @@ body {
   fill: #f8f9fa; /* Couleur des cantons */
   stroke: #dee2e6; /* Couleur des frontières */
   stroke-width: 2;
-  transition: fill 0.3s;
 }
 .marker {
   cursor: pointer;
 }
 .marker-bg {
   fill: #00cf2e;
-  stroke: white;
+  stroke: #00b12f;
   stroke-width: 2;
 }
 .marker-number {
   fill: white;
-  font-size: 14px;
+  font-size: 22px;
   font-weight: bold;
-  font-family: Arial, sans-serif;
 }
 .marker:hover .marker-bg {
   fill: #00b12f;
-  r: 20;
+  r: 30;
+}
+.map-tooltip {
+  position: absolute;
+  background: rgba(33, 33, 33, 0.95);
+  color: white;
+  padding: 12px 15px;
+  border-radius: 8px;
+  font-size: 14px;
+  z-index: 1000;
+  pointer-events: none; /* Évite que la bulle bloque la souris */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  border: 1px solid #00cf2e;
+  min-width: 150px;
+  transform: translate(-50%, -110%); /* Centre la bulle au-dessus du point */
+}
+.map-tooltip h5 {
+  color: #00cf2e;
+  margin: 0 0 5px 0;
+  font-size: 16px;
+}
+.map-tooltip p {
+  margin: 0;
+  line-height: 1.4;
+  font-size: 13px;
 }
 
 /* Style pour la map Leaflet */
