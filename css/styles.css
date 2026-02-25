@@ -11203,6 +11203,8 @@ body {
 .partners-section {
   padding-top: 4rem;
 }
+
+/* Style pour la map SVG */
 .swiss-map {
   width: 100%;
   height: auto;
@@ -11231,6 +11233,14 @@ body {
 .marker:hover .marker-bg {
   fill: #00b12f;
   r: 20;
+}
+
+/* Style pour la map Leaflet */
+#map{
+  height: 500px;
+  width: 100%;
+  border-radius: 15px;
+  border: 2px solid #212121;
 }
 
 /* --- Style Premium pour tous les écrans --- */

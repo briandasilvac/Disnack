@@ -8,6 +8,57 @@
 // 
 
 window.addEventListener('DOMContentLoaded', event => {
+    // Etapes 1 à 5 pour map Leaflet
+    // 1. Initialisation de la carte avec options de verrouillage
+    var map = L.map('map', {
+        zoomControl: false,
+        scrollWheelZoom: false,
+        doubleClickZoom: false,
+        dragging: false,
+        touchZoom: false,
+        boxZoom: false,
+        keyboard: false
+    });
+
+    // 2. Chargement du fond de carte (Style sombre pour coller à ton thème)
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    // 3. Création d'une icône personnalisée verte
+    var markerGroup = L.featureGroup().addTo(map);
+
+    function createIcon(number) {
+        return L.divIcon({
+            className: 'custom-div-icon',
+            html: `<div style='background-color:#00cf2e; color:white; border-radius:50%; width:30px; height:30px; display:flex; align-items:center; justify-content:center; border:2px solid #f8f9fa; font-weight:bold; box-shadow: 0 2px 5px rgba(0,0,0,0.1);'>${number}</div>`,
+            iconSize: [30, 30],
+            iconAnchor: [15, 15]
+        });
+    }
+
+    // 4. Ajout des marqueurs
+    const partners = [
+        { name: "Genève", coords: [46.2044, 6.1432], count: 2 },
+        { name: "Lausanne", coords: [46.5197, 6.6323], count: 1 },
+        { name: "Bienne", coords: [47.1367, 7.2468], count: 1 },
+        { name: "Jura", coords: [47.3667, 7.3444], count: 2 },
+        { name: "Bâle", coords: [47.5596, 7.5886], count: 2 },
+        { name: "Zürich", coords: [47.3769, 8.5417], count: 3 }
+    ];
+
+    partners.forEach(partner => {
+        L.marker(partner.coords, { icon: createIcon(partner.count) })
+            .addTo(markerGroup)
+            .bindPopup(`<b>${partner.name}</b><br>${partner.count} Partenaire${partner.count > 1 ? 's' : ''}.`);
+    });
+    
+    // 5. Ajustement automatique
+    map.fitBounds(markerGroup.getBounds(), { padding: [50, 50] });
+
+    window.onresize = function() {
+        map.fitBounds(markerGroup.getBounds(), { padding: [50, 50] });
+    };
 
     // Navbar shrink function
     var navbarShrink = function () {
