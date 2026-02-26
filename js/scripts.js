@@ -98,9 +98,9 @@ window.addEventListener('DOMContentLoaded', event => {
 
     // --- INJECTION DE LA NAVBAR DYNAMIQUE SELON PRODUITS ---
     const navContainer = document.getElementById('navbar-container');
+    const isIndex = window.location.pathname === '/';
+
     if (navContainer && typeof catalogue !== 'undefined') {
-        // Vérifier si on est sur la page d'accueil, sinon on ajoute le préfixe "index.html"
-        const isIndex = window.location.pathname === '/';
         const prefix = isIndex ? "" : "./";
 
         // Génération de la liste de produits
@@ -150,11 +150,8 @@ window.addEventListener('DOMContentLoaded', event => {
                     top: 0
                 });
 
-                // 3. On nettoie l'URL (retire les #ancres)
+                // On nettoie l'URL (retire les #ancres)
                 history.replaceState(null, null, window.location.pathname);
-            }else {
-                // Sur les pages produits, on laisse le lien href="./" s'exécuter normalement
-                console.log("Redirection vers l'accueil...");
             }
         });
     }
