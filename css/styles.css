@@ -11399,11 +11399,31 @@ body {
 
 /* --- PAGE PRODUIT --- */
 .product-img-wrapper {
+  cursor: pointer;
+  position: relative;
   background: #f8f9fa;
   transition: transform 0.3s ease;
 }
 .product-img-wrapper:hover {
   transform: scale(1.02);
+}
+.zoom-indicator {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: transparent;
+  color: rgba(0, 207, 46, 0.6);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: 0.3s;
+  pointer-events: none;
+}
+.product-img-wrapper:hover .zoom-indicator {
+  opacity: 1;
 }
 /* Cercle pour l'icône dimensions */
 .icon-circle {
