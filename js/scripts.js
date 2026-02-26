@@ -156,6 +156,26 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     }
 
+    // --- INJECTION DU FOOTER ---
+    const footerContainer = document.getElementById('footer-container');
+    if (footerContainer) {
+        // Récupération de l'année actuelle pour un affichage dynamique
+        const year = new Date().getFullYear(); 
+
+        footerContainer.innerHTML = `
+        <footer class="footer bg-black small text-center text-white-50">
+            <div class="social mb-3 d-flex justify-content-center">
+                <a class="mx-2" href="https://www.instagram.com/disnack.ch" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a class="mx-2" href="https://www.facebook.com/people/Disnackch/100083677744951/" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+            </div>
+            <div class="container px-4 px-lg-5">&copy; ${year} Disnack. Tous droits réservés.</div>
+        </footer>`;
+    }
+
     // --- LOGIQUE POUR LA CARTE DES PARTENAIRES ---
     // Détections des cartes pour éviter de les manipuler sur les pages de produits
     const mapElement = document.getElementById('map'); // Pour Leaflet
