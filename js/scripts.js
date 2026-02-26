@@ -299,18 +299,14 @@ window.addEventListener('DOMContentLoaded', event => {
 
     // --- PAGE DETAILS D'UN PRODUIT UNIQUE ---
     const pNameElem = document.getElementById('p-name');
-
-    // On récupère les éléments
     const productImg = document.getElementById('p-img');
     const modalImg = document.getElementById('modal-img');
-    const imageModal = new bootstrap.Modal(document.getElementById('imageModal'));
 
-    // Au clic sur l'image ou son conteneur
-    if (productImg) {
+    if (productImg && modalImg) {
+        const imageModal = new bootstrap.Modal(document.getElementById('imageModal'));
+        
         productImg.closest('.product-img-wrapper').addEventListener('click', () => {
-            // On copie la source de l'image du produit vers l'image de la modale
             modalImg.src = productImg.src;
-            // On affiche la modale
             imageModal.show();
         });
     }
