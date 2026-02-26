@@ -96,27 +96,66 @@ window.addEventListener('DOMContentLoaded', event => {
         }
     };
 
-    // --- NAVBAR DYNAMIQUE SELON PRODUITS ---
-    const dropdownMenu = document.getElementById('dropdown-products');
+    // --- INJECTION DE LA NAVBAR DYNAMIQUE SELON PRODUITS ---
+    const navContainer = document.getElementById('navbar-container');
+    if (navContainer && typeof catalogue !== 'undefined') {
+        // Vérifier si on est sur la page d'accueil, sinon on ajoute le préfixe "index.html"
+        const isIndex = window.location.pathname === '/';
+        const prefix = isIndex ? "" : "./";
 
-    if (dropdownMenu && typeof catalogue !== 'undefined') {
-        // On vide le menu (sécurité)
-        dropdownMenu.innerHTML = "";
-
-        Object.keys(catalogue).forEach(id => {
-            const p = catalogue[id];
-            
-            // On crée l'élément de liste <li>
-            const li = document.createElement('li');
-            
-            // On injecte le lien avec le nom du produit
-            li.innerHTML = `
+        // Génération de la liste de produits
+        const productLinks = Object.keys(catalogue).map(id => `
+            <li>
                 <a class="dropdown-item" href="produit.html?id=${id}">
-                    ${p.name}
+                    ${catalogue[id].name}
                 </a>
-            `;
-            
-            dropdownMenu.appendChild(li);
+            </li>
+        `).join('');
+
+        navContainer.innerHTML = `
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="${prefix}" id="logo-navbar"><img class="img-logo" src="assets/img/Logo_Disnack.webp" alt="Logo" /></a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="${prefix}#a-propos">A propos</a></li>
+                        <li class="nav-item dropdown dropdown-hover">
+                            <a class="nav-link dropdown-toggle" href="${prefix}#produits" id="navbarDropdown" role="button">
+                                Produits
+                            </a>
+                            <ul id="dropdown-products" class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+                                ${productLinks}
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="${prefix}#partenaires">Partenaires</a></li>
+                        <li class="nav-item"><a class="nav-link" href="${prefix}#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>`;
+    }
+
+    // Défilement vers le haut de l'accueil
+    const logoLink = document.getElementById('logo-navbar');
+    if (logoLink) {
+        logoLink.addEventListener('click', function(e) {
+            if (isIndex) {
+                // Empêche le rechargement de la page
+                e.preventDefault(); 
+                
+                window.scrollTo({
+                    top: 0
+                });
+
+                // 3. On nettoie l'URL (retire les #ancres)
+                history.replaceState(null, null, window.location.pathname);
+            }else {
+                // Sur les pages produits, on laisse le lien href="./" s'exécuter normalement
+                console.log("Redirection vers l'accueil...");
+            }
         });
     }
 
@@ -349,5 +388,4 @@ window.addEventListener('DOMContentLoaded', event => {
 
     const counterObserver = new IntersectionObserver(startCounting, { threshold: 0.5 });
     counters.forEach(counter => counterObserver.observe(counter));
-
 });
