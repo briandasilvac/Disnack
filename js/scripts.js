@@ -175,6 +175,31 @@ window.addEventListener('DOMContentLoaded', event => {
             <div class="container px-4 px-lg-5">&copy; ${year} Disnack. Tous droits réservés.</div>
         </footer>`;
     }
+  
+    // --- SECTION CATALOGUE POUR LISTER LES PRODUITS ---
+    const productListContainer = document.getElementById('liste-produits');
+    if (productListContainer) {
+        Object.keys(catalogue).forEach(id => {
+            const p = catalogue[id];
+            const col = document.createElement('div');
+            col.className = 'col mb-5';
+            col.innerHTML = `
+                <div class="card h-100 product-card shadow-sm">
+                    <img class="card-img-top" src="${p.img}" alt="${p.name}">
+                    <div class="card-body p-4 text-center">
+                        <h5 class="fw-bolder">${p.name}</h5>
+                        <p class="text-muted small">${p.description}</p>
+                    </div>
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                        <div class="text-center">
+                            <a class="btn btn-primary mt-auto" href="produit.html?id=${id}">Caractéristiques</a>
+                        </div>
+                    </div>
+                </div>
+            `;
+            productListContainer.appendChild(col);
+        });
+    }
 
     // --- LOGIQUE POUR LA CARTE DES PARTENAIRES ---
     // Détections des cartes pour éviter de les manipuler sur les pages de produits
@@ -272,31 +297,6 @@ window.addEventListener('DOMContentLoaded', event => {
         };
     }
 
-    // --- PAGE CATALOGUE POUR LISTER LES PRODUITS ---
-    const productListContainer = document.getElementById('liste-produits');
-    if (productListContainer) {
-        Object.keys(catalogue).forEach(id => {
-            const p = catalogue[id];
-            const col = document.createElement('div');
-            col.className = 'col mb-5';
-            col.innerHTML = `
-                <div class="card h-100 product-card shadow-sm">
-                    <img class="card-img-top" src="${p.img}" alt="${p.name}">
-                    <div class="card-body p-4 text-center">
-                        <h5 class="fw-bolder">${p.name}</h5>
-                        <p class="text-muted small">${p.description}</p>
-                    </div>
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center">
-                            <a class="btn btn-primary mt-auto" href="produit.html?id=${id}">Caractéristiques</a>
-                        </div>
-                    </div>
-                </div>
-            `;
-            productListContainer.appendChild(col);
-        });
-    }
-
     // --- PAGE DETAILS D'UN PRODUIT UNIQUE ---
     const pNameElem = document.getElementById('p-name');
     if (pNameElem) {
@@ -312,13 +312,16 @@ window.addEventListener('DOMContentLoaded', event => {
             document.getElementById('p-dims').innerText = p.dimensions;
             
             const specsList = document.getElementById('p-specs');
+            specsList.innerHTML = "";
+
             p.specs.forEach(spec => {
                 let li = document.createElement('li');
-                li.innerText = spec;
+                li.className = "col-md-6 py-2";
+                li.innerHTML = `<i class="fas fa-check text-primary me-2 small"></i> ${spec}`;
                 specsList.appendChild(li);
             });
         } else {
-            document.body.innerHTML = "<div class='text-center py-5'><h1>Produit non trouvé</h1><a href='index.html'>Retour</a></div>";
+            document.body.innerHTML = "<div class='text-center py-5'><h1>Produit non trouvé</h1><a href='./#produits'>Retour</a></div>";
         }
     }
 

@@ -11396,3 +11396,66 @@ body {
   padding-top: 4rem;
   padding-bottom: 3rem;
 }
+
+/* --- PAGE PRODUIT --- */
+.product-img-wrapper {
+  background: #f8f9fa;
+  transition: transform 0.3s ease;
+}
+.product-img-wrapper:hover {
+  transform: scale(1.02);
+}
+/* Cercle pour l'icône dimensions */
+.icon-circle {
+  width: 45px;
+  height: 45px;
+  background-color: rgba(0, 207, 46, 0.1);
+  color: #00cf2e;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* Personnalisation de l'accordéon */
+.custom-accordion .accordion-button {
+  background-color: #f8f9fa;
+  color: #333;
+  border-radius: 10px !important;
+}
+.custom-accordion .accordion-button:not(.collapsed) {
+  background-color: rgba(0, 207, 46, 0.05);
+  color: #00cf2e;
+  box-shadow: none;
+}
+.custom-accordion .accordion-button::after {
+  filter: grayscale(1) opacity(0.5);
+}
+.custom-accordion .accordion-item {
+  border: 1px solid rgba(0,0,0,0.05) !important;
+  overflow: hidden;
+}
+.fa-list-ul{
+  color: #00cf2e;
+}
+/* Style des puces dans les caractéristiques */
+.fa-check {
+  color: #00cf2e !important;
+}
+#p-specs li {
+  border-bottom: 1px dashed #e9ecef;
+}
+#p-specs li:last-child {
+  border-bottom: none;
+}
+@media (min-width: 768px) {
+  #p-specs li:last-child {
+    border-bottom: 1px dashed #e9ecef;
+  }
+  #p-specs li:nth-child(even):last-child,
+  #p-specs li:nth-child(odd):nth-last-child(2) {
+    border-bottom: none;
+  }
+  #p-specs li:nth-child(odd):last-child {
+    border-bottom: none;
+  }
+}

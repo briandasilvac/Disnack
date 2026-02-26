@@ -23,25 +23,47 @@
                 </div>
             </div>
         </header>
-        <section class="py-5 mt-5">
+        <section class="py-5">
             <div class="container px-4 px-lg-5">
-                <div class="row gx-4 gx-lg-5 align-items-center">
-                    <div class="col-md-6">
-                        <img class="img-fluid rounded mb-5 mb-md-0" id="p-img" src="" alt="..." />
+                <div class="row gx-4 gx-lg-5 align-items-center mb-5">
+                    <div class="col-md-6 mb-4 mb-md-0">
+                        <div class="product-img-wrapper shadow-lg rounded-4 overflow-hidden">
+                            <img class="img-fluid" id="p-img" src="" alt="..." />
+                        </div>
                     </div>
                     <div class="col-md-6">
-                        <p class="lead" id="p-description">Description détaillée...</p>
-                        
-                        <h5 class="fw-bold mt-4">Caractéristiques :</h5>
-                        <ul id="p-specs"></ul>
-
-                        <h5 class="fw-bold mt-4">Dimensions :</h5>
-                        <p id="p-dims"></p>
-
-                        <div class="d-flex mt-5">
-                            <a href="index.html#contact" class="btn btn-primary flex-shrink-0">
-                                <i class="fas fa-envelope me-1"></i> Demander un devis
+                        <p class="lead text-muted mb-4" id="p-description">Description...</p>
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="icon-circle me-3"><i class="fas fa-ruler-combined"></i></div>
+                            <div>
+                                <small class="text-uppercase text-muted fw-bold">Dimensions</small>
+                                <p class="mb-0 fw-bold" id="p-dims">...</p>
+                            </div>
+                        </div>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                            <a href="./#contact" class="btn btn-primary btn-lg px-5">
+                                <i class="fas fa-envelope me-2"></i>Demander un devis
                             </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <div class="accordion accordion-flush custom-accordion shadow-sm rounded-4 border overflow-hidden" id="productAccordion">
+                            <div class="accordion-item border-0">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed fw-bold fs-5 py-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSpecs">
+                                        <i class="fas fa-list-ul me-3"></i>
+                                        Caractéristiques techniques
+                                    </button>
+                                </h2>
+                                <div id="collapseSpecs" class="accordion-collapse collapse" data-bs-parent="#productAccordion">
+                                    <div class="accordion-body bg-white p-4">
+                                        <ul class="row list-unstyled mb-0" id="p-specs">
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
