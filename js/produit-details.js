@@ -88,6 +88,30 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
+    // Logique pour la navbar dynamique selon produits
+    const dropdownMenu = document.getElementById('dropdown-products');
+
+    if (dropdownMenu && typeof catalogue !== 'undefined') {
+        // On vide le menu (sécurité)
+        dropdownMenu.innerHTML = "";
+
+        Object.keys(catalogue).forEach(id => {
+            const p = catalogue[id];
+            
+            // On crée l'élément de liste <li>
+            const li = document.createElement('li');
+            
+            // On injecte le lien avec le nom du produit
+            li.innerHTML = `
+                <a class="dropdown-item" href="produit.html?id=${id}">
+                    ${p.name}
+                </a>
+            `;
+            
+            dropdownMenu.appendChild(li);
+        });
+    }
+
     // Page catalogue qui liste les produits
     const productListContainer = document.getElementById('liste-produits');
     if (productListContainer) {
