@@ -11333,15 +11333,15 @@ body {
 }
 
 /* --- SECTION CONTACT (FORMULAIRE) --- */
-.form-section {
-  padding: 2rem 0;
+.contact-section {
+  padding-top: 2rem;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.9) 75%, #000 100%), url("../assets/img/Background.png");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-size: cover;
 }
-.form-section .form-contact input, .form-section .form-contact textarea {
+.contact-section .form-contact input, .contact-section .form-contact textarea {
   box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;
   padding: 1.25rem 2rem;
   height: auto;
@@ -11350,7 +11350,7 @@ body {
   letter-spacing: 0.15rem;
   border: 0;
 }
-.form-section .form-contact textarea {
+.contact-section .form-contact textarea {
   height: 10rem;
 }
 

@@ -131,7 +131,7 @@ window.addEventListener('DOMContentLoaded', event => {
                             </ul>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="${prefix}#partenaires">Partenaires</a></li>
-                        <li class="nav-item"><a class="nav-link" href="${prefix}#form-section">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="${prefix}#contact">Contact</a></li>
                     </ul>
                 </div>
             </div>
