@@ -36,7 +36,7 @@
   --bs-gray-900: #212529;
   --bs-primary: #64a19d;
   --bs-secondary: #7464a1;
-  --bs-success: #67c29c;
+  --bs-success: #00cf2e;
   --bs-info: #1cabc4;
   --bs-warning: #e4c662;
   --bs-danger: #a16468;
@@ -46,7 +46,7 @@
   --bs-white: #fff;
   --bs-primary-rgb: 0, 207, 46;
   --bs-secondary-rgb: 116, 100, 161;
-  --bs-success-rgb: 103, 194, 156;
+  --bs-success-rgb: 0, 207, 46;
   --bs-info-rgb: 28, 171, 196;
   --bs-warning-rgb: 228, 198, 98;
   --bs-danger-rgb: 161, 100, 104;
@@ -6783,7 +6783,7 @@ textarea.form-control-lg {
 
 .text-bg-success {
   color: #000 !important;
-  background-color: RGBA(103, 194, 156, var(--bs-bg-opacity, 1)) !important;
+  background-color: RGBA(0, 207, 46, var(--bs-bg-opacity, 1)) !important;
 }
 
 .text-bg-info {
@@ -11341,15 +11341,17 @@ body {
   background-attachment: scroll;
   background-size: cover;
 }
-.form-section .form-contact input {
+.form-section .form-contact input, .form-section .form-contact textarea {
   box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;
   padding: 1.25rem 2rem;
   height: auto;
   font-family: "Varela Round", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 80%;
-  text-transform: uppercase;
   letter-spacing: 0.15rem;
   border: 0;
+}
+.form-section .form-contact textarea {
+  height: 10rem;
 }
 
 /* --- FOOTER --- */

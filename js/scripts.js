@@ -206,7 +206,7 @@ window.addEventListener('DOMContentLoaded', event => {
     const svgMap = document.querySelector('.swiss-map'); // Pour SVG
 
     // Condition pour éviter la manipulation des cartes sur les pages de produits
-    if (mapElement || svgMap) {
+    if (svgMap) {
         // --- Test pour SVG ---
         const markers = document.querySelectorAll('.marker');
         const tooltip = document.getElementById('map-tooltip');
@@ -297,6 +297,78 @@ window.addEventListener('DOMContentLoaded', event => {
         }
 
     };
+
+    // --- LOGIQUE POUR LE FORMULAIRE DE CONTACT ---
+    const contactForm = document.getElementById('contactForm');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', function (event) {
+            // Empêche l'envoi par défaut si le formulaire est invalide
+            if (!contactForm.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+                contactForm.classList.add('was-validated');
+            } else {
+                // Si le formulaire est valide, on gère l'envoi
+                event.preventDefault(); // On bloque pour simuler l'envoi ou utiliser une fonction mail
+                
+                // Affichage du succès
+                document.getElementById('submitSuccessMessage').classList.remove('d-none');
+                document.getElementById('name').classList.add('d-none');
+                document.getElementById('emailAddress').classList.add('d-none');
+                document.getElementById('message').classList.add('d-none');
+                document.getElementById('submitButton').classList.add('d-none');
+                
+                // Ici, tu pourrais envoyer les données à un service comme Formspree ou EmailJS
+                console.log("Nom:", document.getElementById('name').value);
+                console.log("Email:", document.getElementById('emailAddress').value);
+                console.log("Message:", document.getElementById('message').value);
+            }
+
+            // Ajoute la classe Bootstrap pour afficher les erreurs visuelles
+            contactForm.classList.add('was-validated');
+        }, false);
+    }
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', function (event) {
+            event.preventDefault(); // On bloque l'envoi classique dans tous les cas
+
+            if (!contactForm.checkValidity()) {
+                event.stopPropagation();
+                contactForm.classList.add('was-validated');
+            } else {
+                // 1. Préparation des données
+                const data = new FormData(event.target);
+                const submitButton = document.getElementById('submitButton');
+                
+                // Petit indicateur de chargement sur le bouton
+                submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
+                submitButton.classList.add('disabled');
+
+                // 2. Envoi réel via l'API Formspree
+                fetch(event.target.action, {
+                    method: 'POST',
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                }).then(response => {
+                    if (response.ok) {
+                        document.getElementById('form-container').classList.add('d-none');
+                        document.getElementById('submitSuccessMessage').classList.remove('d-none');
+                        contactForm.reset(); // Vide le formulaire
+                    } else {
+                        // En cas d'erreur serveur
+                        document.getElementById('submitErrorMessage').classList.remove('d-none');
+                    }
+                }).catch(error => {
+                    // En cas d'erreur réseau
+                    document.getElementById('submitErrorMessage').classList.remove('d-none');
+                });
+            }
+        }, false);
+    }
 
     // Shrink the navbar 
     navbarShrink();
