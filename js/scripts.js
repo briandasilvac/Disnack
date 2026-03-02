@@ -184,18 +184,15 @@ window.addEventListener('DOMContentLoaded', event => {
             const col = document.createElement('div');
             col.className = 'col mb-5';
             col.innerHTML = `
-                <div class="card h-100 product-card shadow-sm">
-                    <img class="card-img-top" src="${p.img}" alt="${p.name}">
-                    <div class="card-body p-4 text-center">
-                        <h5 class="fw-bolder">${p.name}</h5>
-                        <p class="text-muted small">${p.description}</p>
-                    </div>
-                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center">
-                            <a class="btn btn-primary mt-auto" href="produit.html?id=${id}">Caractéristiques</a>
+                <a href="produit.html?id=${id}" class="text-decoration-none text-dark">
+                    <div class="card h-100 product-card shadow-sm">
+                        <img class="card-img-top" src="${p.img}" alt="${p.name}">
+                        <div class="card-body p-4 text-center">
+                            <h5 class="fw-bolder">${p.name}</h5>
+                            <p class="text-muted small">${p.description}</p>
                         </div>
                     </div>
-                </div>
+                </a>
             `;
             productListContainer.appendChild(col);
         });
