@@ -130,6 +130,7 @@ window.addEventListener('DOMContentLoaded', event => {
                                 ${productLinks}
                             </ul>
                         </li>
+                        <li class="nav-item"><a class="nav-link" href="${prefix}#atouts">Atouts</a></li>
                         <li class="nav-item"><a class="nav-link" href="${prefix}#partenaires">Partenaires</a></li>
                         <li class="nav-item"><a class="nav-link" href="${prefix}#contact">Contact</a></li>
                     </ul>
