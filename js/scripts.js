@@ -13,7 +13,7 @@ window.addEventListener('DOMContentLoaded', event => {
         'di-shake': {
             name: "DI-SHAKE",
             description: "Distributeur de boissons protéinées & sportives de haute qualité.",
-            img: "assets/img/di-shake.webp",
+            img: "assets/img/produits/di-shake.webp",
             specs: [
                 "Ecran LCD de 19\"",
                 "Jusqu'à 10 boissons possibles",
@@ -29,7 +29,7 @@ window.addEventListener('DOMContentLoaded', event => {
         'di-sport': {
             name: "DI-SPORT",
             description: "Le distributeur automatique de référence pour les complexes sportifs ! Covering personnalisé possible.",
-            img: "assets/img/di-sport.webp",
+            img: "assets/img/produits/di-sport.webp",
             specs: [
                 "Interface à écran tactile de 7\"",
                 "Automate à spirales. Jusqu'à 5 plateaux de 6 spirales",
@@ -48,7 +48,7 @@ window.addEventListener('DOMContentLoaded', event => {
         'di-sport-plus': {
             name: "DI-SPORT+",
             description: "Le distributeur automatique de référence pour les complexes sportifs, version XXL ! Covering personnalisé possible.",
-            img: "assets/img/di-sport.webp",
+            img: "assets/img/produits/di-sport.webp",
             specs: [
                 "Interface à écran tactile de 7\"",
                 "Automate à spirales. Jusqu'à 6 plateaux de 10 spirales",
@@ -65,7 +65,7 @@ window.addEventListener('DOMContentLoaded', event => {
         'fontaine-eau-minerale': {
             name: "Fontaine à eau minérale",
             description: "Cette fontaine à eau vous propose toutes les fonctionnalités essentielles que vous pouvez attendre d'une fontaine à eau minérale : facilité d'utilisation, simple à entretenir et de multiples options pour le choix des températures ! Offrez-vous une pause rafraîchissante avec cette fontaine esthétiques et fonctionnelle !",
-            img: "assets/img/fontaine-eau-minerale.webp",
+            img: "assets/img/produits/fontaine-eau-minerale.webp",
             specs: [
                 "Modèle sur pied",
                 "Duo : Tempéré / Froid",
@@ -81,7 +81,7 @@ window.addEventListener('DOMContentLoaded', event => {
         'fontaine-eau-reseau': {
             name: "Fontaine à eau de réseau",
             description: "Cette gamme a été pensée pour régner dans tout type d'environnement - de la salle de conférence à celle de sport. Son design épuré, sa taille compacte, sa large zone de distribution et ses options d'eau flexible en font une solution de choix.",
-            img: "assets/img/fontaine-eau-minerale.webp",
+            img: "assets/img/produits/fontaine-eau-minerale.webp",
             specs: [
                 "Panneau à commandes tactiles",
                 "Distributeur de gobelets intégré dans le socle",
