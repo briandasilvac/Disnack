@@ -11323,27 +11323,63 @@ body {
   opacity: 1;
   transform: scale(1.05);
 }
-@media (max-width: 767.5px) {
-  .logo-slider {
-      display: flex !important;
-      flex-wrap: nowrap !important;
-      overflow-x: auto !important;
-      
-      /* Annule le centrage qui cause le décalage à gauche */
-      justify-content: flex-start !important; 
-
-      -webkit-overflow-scrolling: touch;
-      padding-bottom: 1em;
-      scroll-snap-type: x mandatory;
-  }
+.logo-slider {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  justify-content: flex-start !important;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Cache la barre sur Firefox */
+  margin-bottom: 0 !important;
+  scroll-snap-type: x mandatory;
+}
+.logo-slider::-webkit-scrollbar {
+  display: none; /* Cache la barre sur Chrome/Safari */
+}
+.logo-item {
+  flex: 0 0 40% !important; /* 2.5 logos sur mobile */
+  max-width: 40% !important;
+  scroll-snap-align: start;
+}
+@media (min-width: 768px) {
   .logo-item {
-      /* Force chaque item à prendre 40% de la vue mobile */
-      flex: 0 0 40% !important;
-      max-width: 40% !important;
-      scroll-snap-align: start; /* On cale l'aimant au début du logo */
+      flex: 0 0 25% !important; /* Exactement 4 logos sur desktop */
+      max-width: 25% !important;
   }
-  .logo-slider::-webkit-scrollbar {
-      display: none;
+}
+/* Style des flèches de navigation */
+.nav-arrow {
+  position: absolute;
+  transform: translateY(140%);
+  width: 40px;
+  height: 40px;
+  background: rgba(33, 33, 33, 0.8);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  z-index: 10;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.nav-arrow:hover {
+  background: #00cf2e;
+  color: white;
+}
+.nav-arrow.prev {
+  left: 4%;
+}
+.nav-arrow.next {
+  right: 4%;
+}
+@media (max-width: 830px) {
+  .nav-arrow.prev {
+    left: 2%;
+  }
+  .nav-arrow.next {
+    right: 2%;
   }
 }
 

@@ -241,6 +241,22 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     }
 
+    // --- LOGIQUE POUR DEFILEMENT DES LOGOS PARTENAIRES ---
+    const btnPrev = document.querySelector('.nav-arrow.prev');
+    const btnNext = document.querySelector('.nav-arrow.next');
+
+    if (btnPrev && btnNext) {
+        btnPrev.addEventListener('click', () => scrollLogos(-1));
+        btnNext.addEventListener('click', () => scrollLogos(1));
+    }
+
+    function scrollLogos(direction) {
+        const slider = document.getElementById('logoSlider');
+        if (!slider) return;
+        const scrollAmount = slider.clientWidth / (window.innerWidth >= 768 ? 4 : 2);
+        slider.scrollBy({ left: direction * scrollAmount, behavior: 'smooth' });
+    }
+
     // --- PAGE DETAILS D'UN PRODUIT UNIQUE ---
     const pNameElem = document.getElementById('p-name');
     const productImg = document.getElementById('p-img');
