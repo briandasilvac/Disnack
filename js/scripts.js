@@ -10,23 +10,26 @@
 window.addEventListener('DOMContentLoaded', event => {
     // --- CATALOGUE DES PRODUITS ---
     const catalogue = {
-        'di-shake': {
-            name: "DI-SHAKE",
-            description: "Distributeur de boissons protéinées & sportives de haute qualité.",
-            img: "assets/img/produits/Fiilin.webp",
+        'di-sport-classique': {
+            name: "DI-SPORT CLASSIQUE",
+            description: "Le distributeur automatique de référence pour les complexes sportifs ! Covering personnalisé possible.",
+            img: "assets/img/produits/FlessyMmaster.webp",
             specs: [
-                "Ecran LCD de 19\"",
-                "Jusqu'à 10 boissons possibles",
-                "Capacité de 400 gobelets",
+                "Interface à écran tactile de 7\"",
+                "Automate à spirales. Jusqu'à 5 plateaux de 6 spirales",
+                "Espace réfrigéré pour rangement et stock",
                 "Modification des prix de vente, par le gérant de façon facile et pratique",
                 "Statistique de vente accessible au gérant",
-                "Recherche automatique d'anomalies",
+                "Recherche automatique d'anomalies. Capteur de chute. (ex : spirale vide)",
                 "Large vitrine sécurisée anti-vandalisme, accueillante et très lumineuse",
-                "Système de paiement Nayax"
+                "Monnayeur acceptant les Frs et €",
+                "Couleur gris et noire",
+                "Système de paiement Nayax",
+                "Covering personnalisé possible"
             ],
-            dimensions: "183cm (H) x 60cm (L) x 65cm (P) - 180kg"
+            dimensions: "170cm (H) x 72cm (L) x 83cm (P)"
         },
-        'di-sport': {
+        'di-sport-h70': {
             name: "DI-SPORT H70",
             description: "Le distributeur automatique de référence pour les complexes sportifs ! Covering personnalisé possible.",
             img: "assets/img/produits/Mistral_H70.webp",
@@ -43,9 +46,9 @@ window.addEventListener('DOMContentLoaded', event => {
                 "Système de paiement Nayax",
                 "Covering personnalisé possible"
             ],
-            dimensions: "170cm (H) x 72cm (L) x 83cm (P)"
+            dimensions: "183cm (H) x 71cm (L) x 89cm (P)"
         },
-        'di-sport-plus': {
+        'di-sport-h85': {
             name: "DI-SPORT H85",
             description: "Le distributeur automatique de référence pour les complexes sportifs, version XXL ! Covering personnalisé possible.",
             img: "assets/img/produits/Mistral_H85.webp",
@@ -61,6 +64,22 @@ window.addEventListener('DOMContentLoaded', event => {
                 "Covering personnalisé possible"
             ],
             dimensions: "183cm (H) x 85cm (L) x 89cm (P)"
+        },
+        'di-shake': {
+            name: "DI-SHAKE",
+            description: "Distributeur de boissons protéinées & sportives de haute qualité.",
+            img: "assets/img/produits/Fiilin.webp",
+            specs: [
+                "Ecran LCD de 19\"",
+                "Jusqu'à 10 boissons possibles",
+                "Capacité de 400 gobelets",
+                "Modification des prix de vente, par le gérant de façon facile et pratique",
+                "Statistique de vente accessible au gérant",
+                "Recherche automatique d'anomalies",
+                "Large vitrine sécurisée anti-vandalisme, accueillante et très lumineuse",
+                "Système de paiement Nayax"
+            ],
+            dimensions: "183cm (H) x 60cm (L) x 65cm (P) - 180kg"
         },
         'fontaine-eau-minerale': {
             name: "Fontaine à eau minérale",
